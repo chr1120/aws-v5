@@ -22,7 +22,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew clean build
 
-# UTC가 기준이기 때문에 한국시간으로 맞추려면 +9시간 해야 한다.
+      # UTC가 기준이기 때문에 한국시간으로 맞추려면 +9시간 해야 한다.
       - name: Get current time
         uses: 1466587594/get-current-time@v2
         id: current-time
@@ -33,7 +33,7 @@ jobs:
       - name: Show Current Time
         run: echo "CurrentTime=${{steps.current-time.outputs.formattedTime}}"
 
-# EB에 CD 하기 위해 추가 작성
+      # EB에 CD 하기 위해 추가 작성
       - name: Generate deployment package
         run: |
           mkdir -p deploy
@@ -51,5 +51,3 @@ jobs:
           version_label: aws-v5-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
           deployment_package: deploy/deploy.zip
-
-      
